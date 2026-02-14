@@ -75,6 +75,14 @@ export default function Home() {
     setLetterOpened(true);
   };
 
+  const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
+
+  const moveNoButton = () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    setNoButtonPos({ x, y });
+  };
+
   const handleYesClick = () => {
     const newConfetti = Array.from({ length: 100 }, (_, i) => ({
       id: i,
@@ -154,7 +162,7 @@ export default function Home() {
             <div className="card-sparkle card-sparkle-1">✦</div>
             <div className="card-sparkle card-sparkle-2">✦</div>
             <div className="card-sparkle card-sparkle-3">✧</div>
-            <h2>✦ A Little Note For You ✦</h2>
+            <h2>✦ A Little Note For You, Bhagyashri ✦</h2>
             <p className="message-text">
               We just met yesterday, and yes, it was a little awkward — but honestly,
               I loved every moment of it. The way you smile, the little pauses,
@@ -244,12 +252,23 @@ export default function Home() {
               </div>
 
               <h2 className="bouquet-question">
-                So… will you<br />be my Valentine? 💖
+                So, Basundii… will you<br />be my Valentine? 💖
               </h2>
 
-              <button className="yes-button" onClick={handleYesClick}>
-                Yes!
-              </button>
+              <div className="buttons-container">
+                <button className="yes-button" onClick={handleYesClick}>
+                  Yes!
+                </button>
+                <button
+                  className="no-button"
+                  style={{ transform: `translate(${noButtonPos.x}px, ${noButtonPos.y}px)` }}
+                  onMouseEnter={moveNoButton}
+                  onClick={moveNoButton}
+                  onTouchStart={moveNoButton}
+                >
+                  No
+                </button>
+              </div>
             </div>
           )}
         </section>
@@ -282,27 +301,24 @@ export default function Home() {
           <div className="celebration-section">
             <div className="celebration-art">
               <Image
-                src="/art/calico-cat.png"
-                alt="Cute calico cat"
-                width={200}
-                height={200}
-                style={{ objectFit: 'contain', borderRadius: '12px' }}
+                src="/art/couple-train-final.png"
+                alt="Us on the train"
+                width={800}
+                height={800}
+                style={{ objectFit: 'contain', borderRadius: '12px', maxWidth: '90vw', maxHeight: '60vh' }}
+                priority
               />
             </div>
             <div className="celebration-heart">💖</div>
             <h1 className="celebration-title">
-              Yaaay!! 🎉
+              Yaaay, Basundii!! 🎉
             </h1>
             <p className="celebration-message">
               You just made me the happiest person ever!
               I can&apos;t wait to create beautiful memories together.
               This is going to be amazing! 💕
             </p>
-            <div className="celebration-art-row">
-              <Image src="/art/purple-cat.png" alt="Purple cat" width={100} height={100} style={{ objectFit: 'contain', borderRadius: '8px' }} />
-              <span className="celebration-cats">🐱 💕 🐱</span>
-              <Image src="/art/pink-cat.png" alt="Pink cat" width={100} height={100} style={{ objectFit: 'contain', borderRadius: '8px' }} />
-            </div>
+
           </div>
         </>
       )}

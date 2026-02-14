@@ -617,6 +617,35 @@ body {
   animation: fadeInUp 0.8s ease 0.6s both;
 }
 
+.buttons-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.no-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  background: var(--white);
+  color: var(--text-medium);
+  border: var(--pixel-border) solid var(--text-dark);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--text-dark);
+  transition: all 0.2s ease;
+  position: relative;
+  /* Changed to absolute in JS via style prop if needed, but transform works fine on relative */
+  image-rendering: pixelated;
+  z-index: 10;
+}
+
+.no-button:hover {
+  background: var(--pink-light);
+}
+
 .yes-button {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.4rem;
@@ -732,25 +761,7 @@ body {
   animation: fadeInUp 0.8s ease 0.6s both;
 }
 
-.celebration-art-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  animation: fadeInUp 0.8s ease 0.9s both;
-}
 
-.celebration-art-row img {
-  border: 3px solid var(--pink-medium);
-  box-shadow: 4px 4px 0 var(--pink-soft);
-  image-rendering: pixelated;
-}
-
-.celebration-cats {
-  font-size: 2.5rem;
-  letter-spacing: 0.5rem;
-}
 
 /* ====== CONFETTI ====== */
 .confetti-container {
@@ -864,10 +875,7 @@ body {
     font-size: 4rem;
   }
 
-  .celebration-art-row img {
-    width: 80px !important;
-    height: 80px !important;
-  }
+
 }
 
 /* --- Mobile --- */
@@ -1024,8 +1032,10 @@ body {
   }
 
   .celebration-art img {
-    width: 150px !important;
-    height: 150px !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 50vh;
   }
 
   .celebration-heart {
@@ -1049,15 +1059,9 @@ body {
     letter-spacing: 0.3rem;
   }
 
-  .celebration-art-row {
-    gap: 0.6rem;
-    margin-top: 1.5rem;
-  }
 
-  .celebration-art-row img {
-    width: 55px !important;
-    height: 55px !important;
-  }
+
+
 
   .pixel-float {
     font-size: 1.2rem;
